@@ -1,103 +1,272 @@
-import Image from "next/image";
+"use client"; // Đánh dấu đây là Client Component để dùng styled-jsx
 
-export default function Home() {
+import { FC, useState } from "react";
+
+const LandingPage: FC = () => {
+  // Danh sách món ăn với lý do cute và hình ảnh
+  const snacks = [
+    {
+      name: "Bánh tráng trộn",
+      emoji: "🌯",
+      reason:
+        "Ăn bánh tráng trộn khuya mới đúng điệu, vừa nhâm nhi vừa chill nè!",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHdMQpCUPJMug7rTEp40J6o8GU58C1LqCD1g&s",
+    },
+    {
+      name: "Dưa lưới",
+      emoji: "🍈",
+      reason: "Dưa lưới ngọt mát, ăn khuya nhẹ bụng mà vẫn cute lắm nha!",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeHX6PYRrGmkzUhwIdta8MHci882bRBSKyNw&s",
+    },
+    {
+      name: "Nho",
+      emoji: "🍇",
+      reason: "Nho mọng nước, nhón từng quả khuya là hết buồn ngủ luôn á!",
+      image:
+        "https://img.pikbest.com/png-images/20240510/png-image-of-cute-little-purple-grape_10559719.png!w700wp",
+    },
+    {
+      name: "Dưa hấu",
+      emoji: "🍉",
+      reason: "Dưa hấu đỏ tươi, ăn khuya vừa ngon vừa làm đẹp da nè!",
+      image:
+        "https://img.lovepik.com/free-png/20211205/lovepik-cute-watermelon-png-image_401342127_wh1200.png",
+    },
+    {
+      name: "Trà sữa",
+      emoji: "🧋",
+      reason: "Trà sữa khuya là bạn thân, ngọt ngào như giấc mơ luôn!",
+      image:
+        "https://thuytinhocean.com/wp-content/uploads/2024/08/hinh-ly-tra-sua-cute-don-gian-1.jpg",
+    },
+    {
+      name: "Kem",
+      emoji: "🍦",
+      reason: "Kem mát lạnh khuya, tan chảy trong miệng là hết mệt liền!",
+      image:
+        "https://vieprint.vn/wp-content/uploads/2023/05/mau-sticker-kem-03.jpg",
+    },
+    {
+      name: "Khoai lang chiên",
+      emoji: "🍠",
+      reason: "Khoai lang chiên giòn rụm, khuya ăn là ấm bụng lắm luôn!",
+      image:
+        "https://daylambanh.edu.vn/wp-content/uploads/2020/03/khoai-lang-chien-600x400.jpg",
+    },
+    {
+      name: "Bánh kẹp",
+      emoji: "🥐",
+      reason: "Bánh kẹp thơm lừng, khuya ăn là hạnh phúc ngập tràn nè!",
+      image:
+        "https://anhcute.net/wp-content/uploads/2024/09/Do-an-chibi-hinh-banh-sandwich.jpg",
+    },
+    {
+      name: "Bánh tráng sốt tắc",
+      emoji: "🌮",
+      reason: "Bánh tráng sốt tắc chua cay, khuya ăn là tỉnh ngủ liền á!",
+      image:
+        "https://cuocsong.giaoducthoidai.vn/dataimages/2021/10/07/large/banh-trang_1633593527.png",
+    },
+    {
+      name: "Bắp rang bơ",
+      emoji: "🍿",
+      reason: "Bắp rang bơ thơm nức, khuya ăn vừa ngon vừa vui tai nè!",
+      image:
+        "https://png.pngtree.com/png-clipart/20240323/original/pngtree-kawaii-pop-corn-png-image_14659073.png",
+    },
+    {
+      name: "Sữa chua",
+      emoji: "🥛",
+      reason: "Sữa chua ngọt ngào, khuya ăn là yêu đời ngay á!",
+      image:
+        "https://i.pinimg.com/736x/6c/0e/06/6c0e06677b715e3f692063a3b3158ac5.jpg",
+    },
+  ];
+
+  // Chọn ngẫu nhiên một món ăn
+  const randomIndex = Math.floor(Math.random() * snacks.length);
+  const randomSnack = snacks[randomIndex];
+
+  // State để hiển thị hình ảnh
+  const [showImage, setShowImage] = useState(false);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-yellow-100 to-purple-200 flex flex-col items-center justify-center p-4 sm:p-6 overflow-hidden">
+      {/* Tiêu đề căn giữa và responsive */}
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-pink-500 mb-8 animate-bounce tracking-wide drop-shadow-lg text-center">
+        🌟 Ăn Khuya Cute Lắm Nha! 🌟
+      </h1>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+      {/* Hộp món ăn và lý do */}
+      <div className="relative max-w-md w-full bg-white p-6 rounded-3xl shadow-xl text-center animate-fadeIn border-4 border-dashed border-pink-300 flex flex-col items-center">
+        {/* Tim nhỏ trang trí */}
+        <span className="absolute -top-4 -left-4 text-3xl animate-wiggle">
+          💕
+        </span>
+        <span className="absolute -top-4 -right-4 text-3xl animate-wiggle delay-200">
+          ✨
+        </span>
+        <span className="absolute -bottom-4 -left-4 text-3xl animate-wiggle delay-400">
+          🌸
+        </span>
+
+        <p className="text-lg sm:text-xl text-gray-600 italic mb-6 font-semibold max-w-xs mx-auto">
+          "{randomSnack.reason}"
+        </p>
+
+        {/* Món ăn ngẫu nhiên */}
+        <button
+          onClick={() => setShowImage(!showImage)}
+          className="flex items-center justify-center gap-2 px-6 py-3 bg-pink-100 text-gray-700 rounded-full hover:bg-pink-200 hover:scale-105 transition-all mb-4 mx-auto"
+        >
+          <span className="text-3xl sm:text-4xl animate-wiggle">
+            {randomSnack.emoji}
+          </span>
+          <span className="text-lg sm:text-xl font-semibold">
+            {randomSnack.name}
+          </span>
+        </button>
+
+        {/* Hình ảnh món ăn */}
+        {showImage && (
+          <div className="mt-4 animate-popIn flex flex-col items-center">
+            <img
+              src={randomSnack.image}
+              alt={randomSnack.name}
+              className="w-full max-w-xs rounded-xl shadow-lg"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+            <p className="mt-2 text-pink-500 font-semibold animate-pulse">
+              Ngon quá nha! 😋
+            </p>
+          </div>
+        )}
+
+        {/* Nút tìm món khác */}
+        <button
+          onClick={() => window.location.reload()}
+          className="px-6 py-3 bg-pink-400 text-white font-semibold rounded-full hover:bg-pink-500 hover:scale-110 transition-all focus:outline-none focus:ring-4 focus:ring-pink-300 shadow-md mt-4 mx-auto"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <span className="flex items-center justify-center gap-2">
+            Tìm món khác nè! <span className="animate-pulse">✨</span>
+          </span>
+        </button>
+      </div>
+
+      {/* Footer kawaii */}
+      <p className="mt-8 text-gray-500 text-sm sm:text-base animate-pulse font-semibold text-center">
+        Made with 💞 for cute snack lovers ~
+      </p>
+
+      {/* Hiệu ứng nền động */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+        <span className="absolute top-10 left-20 text-2xl sm:text-3xl animate-float">
+          🌟
+        </span>
+        <span className="absolute bottom-20 right-20 text-2xl sm:text-3xl animate-float delay-200">
+          💖
+        </span>
+        <span className="absolute top-1/3 right-1/4 text-2xl sm:text-3xl animate-float delay-400">
+          🌸
+        </span>
+      </div>
+
+      {/* CSS Animation */}
+      <style jsx>{`
+        @keyframes bounce {
+          0%,
+          20%,
+          50%,
+          80%,
+          100% {
+            transform: translateY(0);
+          }
+          40% {
+            transform: translateY(-20px);
+          }
+          60% {
+            transform: translateY(-10px);
+          }
+        }
+        @keyframes fadeIn {
+          0% {
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        @keyframes wiggle {
+          0% {
+            transform: rotate(0deg);
+          }
+          25% {
+            transform: rotate(15deg);
+          }
+          50% {
+            transform: rotate(0deg);
+          }
+          75% {
+            transform: rotate(-15deg);
+          }
+          100% {
+            transform: rotate(0deg);
+          }
+        }
+        @keyframes float {
+          0% {
+            transform: translateY(0);
+            opacity: 0.7;
+          }
+          50% {
+            transform: translateY(-30px);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(0);
+            opacity: 0.7;
+          }
+        }
+        @keyframes popIn {
+          0% {
+            transform: scale(0);
+            opacity: 0;
+          }
+          80% {
+            transform: scale(1.1);
+            opacity: 1;
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+        .animate-bounce {
+          animation: bounce 2s infinite;
+        }
+        .animate-fadeIn {
+          animation: fadeIn 1s ease-out;
+        }
+        .animate-wiggle {
+          animation: wiggle 1.5s infinite;
+        }
+        .animate-float {
+          animation: float 4s infinite ease-in-out;
+        }
+        .animate-popIn {
+          animation: popIn 0.5s ease-out;
+        }
+        .delay-200 {
+          animation-delay: 0.2s;
+        }
+        .delay-400 {
+          animation-delay: 0.4s;
+        }
+      `}</style>
     </div>
   );
-}
+};
+
+export default LandingPage;
