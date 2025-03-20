@@ -65,7 +65,7 @@ const LandingPage: FC = () => {
       name: "Bắp rang bơ",
       emoji: "🍿",
       reason: "Bắp rang bơ thơm nức, khuya ăn vừa ngon vừa vui tai nè!",
-      image: "/images/pngtree-kawaii-pop-corn-png-image_14659073.png",
+      image: "/images/pngtree-kawaii-pop-corn-png-image_14659073.jpg",
     },
     {
       name: "Sữa chua",
@@ -95,7 +95,7 @@ const LandingPage: FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-pink-100 via-yellow-100 to-purple-200 flex flex-col items-center justify-center p-4 sm:p-6 overflow-hidden">
       {/* Tiêu đề căn giữa và responsive */}
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-pink-500 mb-8 animate-bounce tracking-wide drop-shadow-lg text-center">
-        🌟 Ăn Khuya Cute Lắm Nha! 🌟
+        🌟Ăn Khuya Cute Lắm🌟
       </h1>
 
       {/* Hộp món ăn và lý do */}
@@ -131,7 +131,7 @@ const LandingPage: FC = () => {
         {/* Hình ảnh món ăn */}
         {showImage && (
           <div className="mt-4 animate-popIn flex flex-col items-center">
-            <div className="relative w-full max-w-xs h-64">
+            <div className="relative w-full max-w-xs h-64 sm:h-80">
               <NextImage
                 src={currentSnack.image}
                 alt={currentSnack.name}
