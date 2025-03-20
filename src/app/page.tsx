@@ -95,7 +95,7 @@ const LandingPage: FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-pink-100 via-yellow-100 to-purple-200 flex flex-col items-center justify-center p-4 sm:p-6 overflow-hidden">
       {/* Tiêu đề căn giữa và responsive */}
       <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-pink-500 mb-8 animate-bounce tracking-wide drop-shadow-lg text-center">
-        Ăn Khuya healthy Lắm🌙
+        Ăn khuya healthy lắm🌙
       </h3>
 
       {/* Hộp món ăn và lý do */}
