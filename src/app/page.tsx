@@ -1,6 +1,7 @@
 "use client"; // Đánh dấu đây là Client Component để dùng styled-jsx
 
 import { FC, useState } from "react";
+import NextImage from 'next/image';
 
 const LandingPage: FC = () => {
   // Danh sách món ăn với lý do cute và hình ảnh
@@ -85,12 +86,21 @@ const LandingPage: FC = () => {
     },
   ];
 
-  // Chọn ngẫu nhiên một món ăn
-  const randomIndex = Math.floor(Math.random() * snacks.length);
-  const randomSnack = snacks[randomIndex];
+  // State để chọn một món ăn
+  const [currentSnack, setCurrentSnack] = useState(() => {
+    const randomIndex = Math.floor(Math.random() * snacks.length);
+    return snacks[randomIndex];
+  });
 
   // State để hiển thị hình ảnh
   const [showImage, setShowImage] = useState(false);
+
+  // Hàm chọn món ăn ngẫu nhiên khác
+  const getRandomSnack = () => {
+    const randomIndex = Math.floor(Math.random() * snacks.length);
+    setCurrentSnack(snacks[randomIndex]);
+    setShowImage(false);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 via-yellow-100 to-purple-200 flex flex-col items-center justify-center p-4 sm:p-6 overflow-hidden">
@@ -113,7 +123,7 @@ const LandingPage: FC = () => {
         </span>
 
         <p className="text-lg sm:text-xl text-gray-600 italic mb-6 font-semibold max-w-xs mx-auto">
-          "{randomSnack.reason}"
+          &ldquo;{currentSnack.reason}&rdquo;
         </p>
 
         {/* Món ăn ngẫu nhiên */}
@@ -122,21 +132,29 @@ const LandingPage: FC = () => {
           className="flex items-center justify-center gap-2 px-6 py-3 bg-pink-100 text-gray-700 rounded-full hover:bg-pink-200 hover:scale-105 transition-all mb-4 mx-auto"
         >
           <span className="text-3xl sm:text-4xl animate-wiggle">
-            {randomSnack.emoji}
+            {currentSnack.emoji}
           </span>
           <span className="text-lg sm:text-xl font-semibold">
-            {randomSnack.name}
+            {currentSnack.name}
           </span>
         </button>
 
         {/* Hình ảnh món ăn */}
         {showImage && (
           <div className="mt-4 animate-popIn flex flex-col items-center">
-            <img
-              src={randomSnack.image}
-              alt={randomSnack.name}
-              className="w-full max-w-xs rounded-xl shadow-lg"
-            />
+            <div className="relative w-full max-w-xs h-64">
+              <NextImage
+                src={currentSnack.image}
+                alt={currentSnack.name}
+                fill
+                sizes="(max-width: 768px) 100vw, 300px"
+                style={{
+                  objectFit: 'contain',
+                  borderRadius: '0.75rem'
+                }}
+                className="shadow-lg"
+              />
+            </div>
             <p className="mt-2 text-pink-500 font-semibold animate-pulse">
               Ngon quá nha! 😋
             </p>
@@ -145,7 +163,7 @@ const LandingPage: FC = () => {
 
         {/* Nút tìm món khác */}
         <button
-          onClick={() => window.location.reload()}
+          onClick={getRandomSnack}
           className="px-6 py-3 bg-pink-400 text-white font-semibold rounded-full hover:bg-pink-500 hover:scale-110 transition-all focus:outline-none focus:ring-4 focus:ring-pink-300 shadow-md mt-4 mx-auto"
         >
           <span className="flex items-center justify-center gap-2">
@@ -172,7 +190,6 @@ const LandingPage: FC = () => {
         </span>
       </div>
 
-      {/* CSS Animation */}
       <style jsx>{`
         @keyframes bounce {
           0%,
