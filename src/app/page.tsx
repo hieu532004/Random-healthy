@@ -11,78 +11,67 @@ const LandingPage: FC = () => {
       emoji: "🌯",
       reason:
         "Ăn bánh tráng trộn khuya mới đúng điệu, vừa nhâm nhi vừa chill nè!",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHdMQpCUPJMug7rTEp40J6o8GU58C1LqCD1g&s",
+      image: "/images/trangtron.jpg",
     },
     {
       name: "Dưa lưới",
       emoji: "🍈",
       reason: "Dưa lưới ngọt mát, ăn khuya nhẹ bụng mà vẫn cute lắm nha!",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeHX6PYRrGmkzUhwIdta8MHci882bRBSKyNw&s",
+      image: "/images/duoiluoi.jpg",
     },
     {
       name: "Nho",
       emoji: "🍇",
       reason: "Nho mọng nước, nhón từng quả khuya là hết buồn ngủ luôn á!",
-      image:
-        "https://img.pikbest.com/png-images/20240510/png-image-of-cute-little-purple-grape_10559719.png!w700wp",
+      image: "/images/nho.jpg",
     },
     {
       name: "Dưa hấu",
       emoji: "🍉",
       reason: "Dưa hấu đỏ tươi, ăn khuya vừa ngon vừa làm đẹp da nè!",
-      image:
-        "https://img.lovepik.com/free-png/20211205/lovepik-cute-watermelon-png-image_401342127_wh1200.png",
+      image: "/images/dưa hấu.jpg",
     },
     {
       name: "Trà sữa",
       emoji: "🧋",
       reason: "Trà sữa khuya là bạn thân, ngọt ngào như giấc mơ luôn!",
-      image:
-        "https://thuytinhocean.com/wp-content/uploads/2024/08/hinh-ly-tra-sua-cute-don-gian-1.jpg",
+      image: "/images/Trà sữa.jpg",
     },
     {
       name: "Kem",
       emoji: "🍦",
       reason: "Kem mát lạnh khuya, tan chảy trong miệng là hết mệt liền!",
-      image:
-        "https://vieprint.vn/wp-content/uploads/2023/05/mau-sticker-kem-03.jpg",
+      image: "/images/kem-03.jpg",
     },
     {
       name: "Khoai lang chiên",
       emoji: "🍠",
       reason: "Khoai lang chiên giòn rụm, khuya ăn là ấm bụng lắm luôn!",
-      image:
-        "https://daylambanh.edu.vn/wp-content/uploads/2020/03/khoai-lang-chien-600x400.jpg",
+      image: "/images/khoai-lang-chien-600x400.jpg",
     },
     {
       name: "Bánh kẹp",
       emoji: "🥐",
       reason: "Bánh kẹp thơm lừng, khuya ăn là hạnh phúc ngập tràn nè!",
-      image:
-        "https://anhcute.net/wp-content/uploads/2024/09/Do-an-chibi-hinh-banh-sandwich.jpg",
+      image: "/images/banhkep.jpg",
     },
     {
       name: "Bánh tráng sốt tắc",
       emoji: "🌮",
       reason: "Bánh tráng sốt tắc chua cay, khuya ăn là tỉnh ngủ liền á!",
-      image:
-        "https://cuocsong.giaoducthoidai.vn/dataimages/2021/10/07/large/banh-trang_1633593527.png",
+      image: "/images/banh-trang sốt tắc_1633593527.jpg",
     },
     {
       name: "Bắp rang bơ",
       emoji: "🍿",
       reason: "Bắp rang bơ thơm nức, khuya ăn vừa ngon vừa vui tai nè!",
-      image:
-        "https://png.pngtree.com/png-clipart/20240323/original/pngtree-kawaii-pop-corn-png-image_14659073.png",
+      image: "/images/pngtree-kawaii-pop-corn-png-image_14659073.png",
     },
     {
       name: "Sữa chua",
       emoji: "🥛",
       reason: "Sữa chua ngọt ngào, khuya ăn là yêu đời ngay á!",
-      image:
-        "https://i.pinimg.com/736x/6c/0e/06/6c0e06677b715e3f692063a3b3158ac5.jpg",
+      image: "/images/6c0e06677b715e3f692063a3b3158ac5.jpg",
     },
   ];
 
